@@ -1,13 +1,16 @@
 import { useState } from "react";
-import Home from "./Home.jsx";
+import Home from "./New";
 import ListUser from './ListUser.jsx';
+import { Routes, Route } from 'react-router-dom'
+import About from "./pages/About.jsx"
+import Contact from "./pages/Contact.jsx"
 function App() {
   let [user, setUser] = useState({ name: "Suresh", username: "Tharunkumar" })
   let [userList, setUserList] = useState([]);
   let [user1, setUser1] = useState({ name: '', email: '', work: '', priority: '' });
   return (
     <>
-      <Home name="Naveen Balaji K" usernmae="Suresh5" />
+      <Home name="Tharunkumar" usernmae="Suresh5" />
       <form onSubmit={(e) => {
         e.preventDefault()
         setUserList([...userList, { ...user }]);// ...(triple dots) are used to avoid the recent updated data to all 
@@ -42,6 +45,10 @@ function App() {
         </table>
       </div>
       <ListUser />
+      <Routes>
+        <Route path="/About" element={<About />} />
+        <Route path="/Contact" element={<Contact />} />
+      </Routes>
     </>
   );
 }
